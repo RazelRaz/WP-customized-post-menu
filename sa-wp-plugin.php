@@ -9,6 +9,11 @@
  * Author URI:        https://razelahmed.com
  */
 
+ if ( ! defined('ABSPATH') ) {
+    exit;
+ }
+
+ 
  class SA_WP_Plugin {
 
     private static $instance;
@@ -30,8 +35,10 @@
 
     private function require_classes() {
       require_once __DIR__ ."/includes/admin-menu.php";
+      require_once __DIR__ ."/includes/page-post-column.php";
       
       new Admin_Menu_SA_WP_Plugin();
+      new SA_WP_Plugin_Page_Post_column();
     }
 
  }
