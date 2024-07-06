@@ -31,6 +31,17 @@ class Admin_Menu_SA_WP_Plugin {
       );
     }
 
+
+    // for date filter
+    if (isset($_GET['m']) && $_GET['m'] != '0') {
+      $post_args['date_query'] = array(
+        array(
+          'year'  => substr($_GET['m'], 0, 4),
+          'month' => substr($_GET['m'], 4, 2),
+        ),
+      );
+    }
+
     $posts = get_posts( $post_args );
 
     // categories
@@ -38,7 +49,11 @@ class Admin_Menu_SA_WP_Plugin {
       'taxonomy' => 'category',
     ));
 
-    print_r( $terms );
+    // print_r( $terms );
+
+
+
+    
 
     // Those files which contains html - we will ise include_once
     include_once __DIR__ .'/templates/sa-wp-plugin-menu.php';
